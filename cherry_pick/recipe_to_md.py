@@ -43,7 +43,7 @@ def generate_recipe_text(scraper):
 - **Prep Time:** {safe_call(scraper.prep_time)} minutes
 - **Cook Time:** {safe_call(scraper.cook_time)} minutes
 - **Total Time:** {safe_call(scraper.total_time)} minutes
-- **Yields:** {safe_call(scraper.yields)} servings
+- **Yields:** {safe_call(scraper.yields)}
 
 ## 🥣 Equipment
 {", ".join(equipment) if equipment else "No special equipment required."}
