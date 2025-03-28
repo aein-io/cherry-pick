@@ -1,13 +1,13 @@
-import unittest
+import pytest
 from recipe_scrapers import scrape_me, WebsiteNotImplementedError
 
 
-class TestMain(unittest.TestCase):
+class TestErrors:
     def test_websitenotimplemented_err(self):
-        with self.assertRaises(WebsiteNotImplementedError):
+        with pytest.raises(WebsiteNotImplementedError):
             scrape_me(
                 "https://iwashyoudry.com/last-minute-chicken-recipe/")
 
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_exception(self):
+        with pytest.raises(Exception):
+            scrape_me("https://www.teaforturmeric.com/chicken-biryani/")
