@@ -40,5 +40,5 @@ build/
 # --- pytest / Testing Files ---
 .coverage
 htmlcov/
-pytest_cache/
+.pytest_cache/
 nosetests.xml
