@@ -4,11 +4,10 @@ version = "0.1.0"
 description = "CLI tool for extracting recipes from websites into PDF files."
 authors = [{ name = "aein", email = "aaeinnor11@gmail.com" }]
 readme = "README.md"
-requires-python = ">=3.13,<4"
+requires-python = ">=3.10"
 dependencies = [
     "recipe-scrapers (>=15.6.0,<16.0.0)",
     "markdown (>=3.7,<4.0)",
-    "argparse (>=1.4.0,<2.0.0)",
     "weasyprint (>=65.0,<66.0)",
 ]
 
