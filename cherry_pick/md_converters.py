@@ -6,9 +6,9 @@ pretty_css_path = os.path.join(os.path.dirname(__file__), "pretty-styles.css")
 css_path = os.path.join(os.path.dirname(__file__), "styles.css")
 
 
-def md_to_pdf(md_text, filename, ispretty):
+def md_to_pdf(md_text, filename, pretty_flag):
     html_content = markdown.markdown(md_text)
-    if ispretty:
+    if pretty_flag:
         full_html = f'<div class="recipe-container">{html_content}</div>'
         HTML(string=full_html).write_pdf(
             filename, stylesheets=[CSS(filename=pretty_css_path)])

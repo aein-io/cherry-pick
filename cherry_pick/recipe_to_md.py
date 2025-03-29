@@ -21,13 +21,13 @@ def safe_call(scraper_method):
                 return "Information not available."
 
 
-def generate_recipe_text(scraper, ispretty):
+def generate_recipe_text(scraper, pretty_flag):
 
     equipment = safe_call(scraper.equipment)
     ingredients = safe_call(scraper.ingredients)
     instructions = safe_call(scraper.instructions_list)
 
-    if ispretty:
+    if pretty_flag:
         md_recipe = f"""
 # 🍽️ Recipe: {scraper.title()}
 
