@@ -29,7 +29,6 @@ def md_to_pdf(md_text: str, filename: str, pretty_flag: bool) -> None:
     else:
         HTML(string=html_content).write_pdf(
             filename, stylesheets=[CSS(filename=css_path)])
-    print(f"✅ PDF saved as {filename}")
 
 
 def md_to_mdfile(md_text: str, filename: str) -> None:
@@ -39,12 +38,14 @@ def md_to_mdfile(md_text: str, filename: str) -> None:
         md_text (str): The desired content of the markdown file.
         filename (str): Filename of the generated markdown file.
 
+    Raises:
+        Exception: Raised when an error occurs while saving the file.
+
     Returns:
         None
     """
     try:
         with open(filename, 'w') as md_file:
             md_file.write(md_text)
-        print(f"✅ Markdown file saved as {filename}")
     except Exception as e:
-        print(f"❌ Error saving markdown file: {e}")
+        raise Exception(f"❌ Error saving markdown file: {e}")

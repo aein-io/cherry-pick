@@ -9,6 +9,7 @@ dependencies = [
     "recipe-scrapers (>=15.6.0,<16.0.0)",
     "markdown (>=3.7,<4.0)",
     "weasyprint (>=65.0,<66.0)",
+    "tqdm (>=4.67.1,<5.0.0)",
 ]
 
 [tool.poetry]

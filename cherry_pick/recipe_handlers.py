@@ -1,6 +1,8 @@
 from recipe_scrapers import scrape_me, WebsiteNotImplementedError
 from cherry_pick.recipe_to_md import generate_recipe_text
 from cherry_pick.md_converters import md_to_pdf, md_to_mdfile
+from tqdm import tqdm
+import time
 
 
 def scrape_recipe(url: str) -> object:
@@ -18,8 +20,11 @@ def scrape_recipe(url: str) -> object:
         An object containing the scraped recipe details.
     """
     try:
-        scraper = scrape_me(url)
-        return scraper
+        with tqdm(total=1, desc="Scraping Recipe", unit="step") as pbar:
+            scraper = scrape_me(url)
+            time.sleep(1)
+            pbar.update(1)
+            return scraper
     except WebsiteNotImplementedError:
         raise WebsiteNotImplementedError(
             "❌ Sorry! The website is currently not supported by recipe-scrapers.")
@@ -46,9 +51,22 @@ def process_recipe(scraper: object, md_flag: bool, pretty_flag: bool) -> None:
     Returns:
         None
     """
-    md_text = generate_recipe_text(scraper, pretty_flag)
+    steps = ["Generating Markdown text", "Saving file"]
+
+    with tqdm(total=len(steps), desc="Processing Recipe", unit="step") as pbar:
+        md_text = generate_recipe_text(scraper, pretty_flag)
+        pbar.update(1)
+
+        filename = f"{scraper.title()}.md" if md_flag else f"{scraper.title()}.pdf"
+
+        if md_flag:
+            md_to_mdfile(md_text, filename)
+        else:
+            md_to_pdf(md_text, filename, pretty_flag)
+
+        pbar.update(1)
 
     if md_flag:
-        md_to_mdfile(md_text, f"{scraper.title()}.md")
+        print(f"✅ Markdown file saved as {filename}")
     else:
-        md_to_pdf(md_text, f"{scraper.title()}.pdf", pretty_flag)
+        print(f"✅ PDF saved as {filename}")
