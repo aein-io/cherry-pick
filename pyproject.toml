@@ -9,7 +9,7 @@ dependencies = [
     "recipe-scrapers (>=15.6.0,<16.0.0)",
     "markdown (>=3.7,<4.0)",
     "argparse (>=1.4.0,<2.0.0)",
-    "xhtml2pdf (>=0.2.17,<0.3.0)",
+    "weasyprint (>=65.0,<66.0)",
 ]
 
 [tool.poetry]
