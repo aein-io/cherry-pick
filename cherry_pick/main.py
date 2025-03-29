@@ -1,6 +1,7 @@
 import argparse
 from recipe_scrapers import scrape_me, WebsiteNotImplementedError
 from cherry_pick.recipe_to_md import generate_recipe_text
+from cherry_pick.md_text_to_pdf import md_text_to_pdf
 
 
 def main():
@@ -13,7 +14,7 @@ def main():
     try:
         scraper = scrape_me(str(args.url))
         md_text = generate_recipe_text(scraper)
-        print(md_text)
+        md_text_to_pdf(md_text, f"{scraper.title()}.pdf")
     except WebsiteNotImplementedError:
         print("Sorry! The website is currently not supported by recipe-scrapers.")
     except ValueError:
