@@ -1,4 +1,3 @@
-import os
 import markdown
 from xhtml2pdf import pisa
 
