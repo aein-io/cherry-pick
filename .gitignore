@@ -15,9 +15,6 @@ poetry.lock
 dist/
 build/
 
-# --- Jupyter Notebooks Checkpoints ---
-.ipynb_checkpoints/
-
 # --- macOS System Files ---
 .DS_Store
 ._*
@@ -30,6 +27,8 @@ build/
 *.swp
 *.swo
 *.pdf
+*.md
+!README.md
 
 # --- IDEs & Editors ---
 .vscode/
