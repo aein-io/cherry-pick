@@ -2,11 +2,6 @@ import os
 import markdown
 from xhtml2pdf import pisa
 
-# Define font path
-FONT_PATH = os.path.abspath(os.path.join(
-    os.path.dirname(__file__), "../fonts/NotoColorEmoji.ttf"))
-
-# HTML Template with CSS Styling
 HTML_TEMPLATE = """<!DOCTYPE html>
 <html>
 <head>
@@ -28,16 +23,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 """
 
 
-def md_text_to_pdf(md_text: str, filename: str):
-    """Convert Markdown to PDF with proper emoji and formatting support."""
-
-    # Convert Markdown to HTML
+def md_text_to_pdf(md_text, filename):
     html_content = markdown.markdown(md_text)
 
-    # Wrap content in the template
     full_html = HTML_TEMPLATE.format(content=html_content)
 
-    # Write to PDF
     with open(filename, "wb") as pdf_file:
         pisa_status = pisa.CreatePDF(full_html, dest=pdf_file)
 
