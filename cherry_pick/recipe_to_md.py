@@ -1,4 +1,16 @@
-def safe_call(scraper_method):
+import os
+from typing import Any, Callable
+
+
+def safe_call(scraper_method: Callable[[], Any]) -> Any:
+    """Attempts to call a given scraper method, returning a default value when an error occurs.
+
+    Args:
+        scraper_method (Callable[[], Any]): A method from a `recipe_scrapers` object.
+
+    Returns:
+        Any: The method's output if succesfel, otherwise a fallback default value.
+    """
     try:
         return scraper_method()
     except Exception:
@@ -21,8 +33,16 @@ def safe_call(scraper_method):
                 return "Information not available."
 
 
-def generate_recipe_text(scraper, pretty_flag):
+def generate_recipe_text(scraper: object, pretty_flag: bool) -> str:
+    """Creates Markdown-formatted recipe text.
 
+    Args:
+        scraper (object): An object that contains the scraped recipe details.
+        pretty_flag(bool): If True, the output is generated with emojis.
+
+    Returns:
+        str: A Markdown-formatted recipe string.
+    """
     equipment = safe_call(scraper.equipment)
     ingredients = safe_call(scraper.ingredients)
     instructions = safe_call(scraper.instructions_list)

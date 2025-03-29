@@ -3,7 +3,20 @@ from cherry_pick.recipe_to_md import generate_recipe_text
 from cherry_pick.md_converters import md_to_pdf, md_to_mdfile
 
 
-def scrape_recipe(url):
+def scrape_recipe(url: str) -> object:
+    """Scrapes the recipe using `scrape_me` and handles errors.
+
+    Args:
+        url (str): The url of the recipe to be scraped.
+
+    Raises:
+        WebsiteNotImplementedError: Raised when the URL is not supported by `recipe-scrapers`.
+        ValueError: Raised when the input is not a valid URL format.
+        Exception: Raised other unexpected errors.
+
+    Returns:
+        An object containing the scraped recipe details.
+    """
     try:
         scraper = scrape_me(url)
         return scraper
@@ -17,7 +30,22 @@ def scrape_recipe(url):
             f"❌ Oops! An error occured while accessing the website: {str(e)}")
 
 
-def process_recipe(scraper, md_flag, pretty_flag):
+def process_recipe(scraper: object, md_flag: bool, pretty_flag: bool) -> None:
+    """Processes the scraped recipe and saves it as either a Markdown or PDF file.
+
+    Based on user input, this function extracts the recipe text and either:
+    - Saves it as a Markdown file if `md_flag` is True.
+    - Converts into a PDF otherwise.
+    - If `pretty_flag` is True, enhanced styling (`pretty-styles.css`) is applied.
+
+    Args:
+        scraper (RecipeScraper): Contains the scraped recipe's details.
+        md_flag (bool): If True, the text will be saved to a Markdown file.
+        pretty_flag (bool): If True, applies enhanced styling using `pretty-styles.css`
+
+    Returns:
+        None
+    """
     md_text = generate_recipe_text(scraper, pretty_flag)
 
     if md_flag:

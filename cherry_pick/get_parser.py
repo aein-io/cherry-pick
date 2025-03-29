@@ -1,7 +1,12 @@
 import argparse
 
 
-def get_parser():
+def get_parser() -> argparse.Namespace:
+    """Creates and returns the argument parser for the CLI.
+
+    Returns:
+        argparse.Namespace: Parsed command-line arguments.
+    """
     parser = argparse.ArgumentParser(
         description="Scrape a recipe from a given URL and return it as a PDF file."
     )
