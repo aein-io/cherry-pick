@@ -40,7 +40,7 @@ python poetry run cherry-pick <url> [options]
 | ------------------- | ------------------------------------------------------ |
 | `url`               | The URL of the recipe to scrape.                       |
 | `-md`, `--markdown` | Export the recipe as a Markdown file instead of a PDF. |
-| `--pretty`          | Apply enhanced formatting to the PDF.                  |
+| `--pretty`          | Apply enhanced formatting to the output file.          |
 
 ## 🛠️ Contributing
 1. Fork the repository 🍴
