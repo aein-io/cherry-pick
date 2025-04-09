@@ -26,7 +26,7 @@ Windows users should install WeasyPrint's required dependencies from [GTK for Wi
 ```sh
 git clone https://github.com/yourusername/cherry-pick.git
 cd cherry-pick
-poetry install  # Or use pip: pip install -r requirements.txt
+poetry install
 ```
 
 ## 📌 Usage
